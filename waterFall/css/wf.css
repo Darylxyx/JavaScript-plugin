@@ -1,0 +1,19 @@
+.wf-item {
+	width: 47%;
+	height: 0;
+	/*margin: 0 0 2% 2%;*/
+	margin-left: 2%;
+	margin-bottom: 2%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	float: left;
+}
+
+.wf-item-1 {
+	padding-bottom: 47%;
+}
+
+.wf-item-2 {
+
+}

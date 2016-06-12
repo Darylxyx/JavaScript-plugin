@@ -2,21 +2,91 @@
 	'use strict';
 
 	function WaterFull(ele, opts) {
-		this.ele = ele;
+		this.ele = this._selector(ele);
 		this.defaults = {
 			type: 1
 		};
-		this.opts = this.extend({}, this.defaults, opts);
-		console.log(this.opts);
+		this.opts = this._extend({}, this.defaults, opts);
 	}
 
 	WaterFull.prototype = {
 		
 		create: function(dataArr) {
-			
+			var type = this.opts.type,
+				funcList = [this.createFirst, this.createSecond, this.createThird];
+
+			if (!type || !dataArr.length) {
+				return;
+			}
+
+			if (funcList[type - 1]) {
+				var str = funcList[type - 1](dataArr),
+					listNode = document.createElement('div');
+				listNode.id = 'wf-container';
+				listNode.style.width = '100%';
+				listNode.style.position = 'relative';
+				listNode.style.overflow = 'hidden';
+				listNode.innerHTML = str;
+				this.ele.appendChild(listNode);
+			}
+
+			if (type === 2) {
+				this.secondeReflows();
+			}
+
 		},
 
-		extend: function() {
+		createFirst: function(dataArr) {
+			// console.log(dataArr);
+			var result = dataArr.map(function(item, index) {
+				return '<div class="wf-item wf-item-1" style="background-image: url('+item.picUrl+');"></div>';
+			});
+			return result.join('');
+		},
+
+		createSecond: function(dataArr) {
+			function countRate(width, height) {
+				return height / width;
+			}
+			var result = dataArr.map(function(item, index) {
+					var height = countRate(item.width, item.height) * 47 + '%';
+					return '<div class="wf-item wf-item-2" style="padding-bottom: '+height+';background-image: url('+item.picUrl+');"></div>';
+				});
+			return result.join('');
+		},
+
+		secondeReflows: function() {
+			var itemList = Array.prototype.slice.call(document.getElementsByClassName('wf-item-2')),
+				marginVal = document.body.clientWidth * 0.02,
+				columnHeightArr = new Array(2);
+
+				itemList.forEach(function(item, index) {
+					if (index < 2) {
+						columnHeightArr[index] = item.offsetHeight + marginVal;
+					} else {
+						var minHeight = Math.min.apply(null, columnHeightArr),
+							minHeightIndex = columnHeightArr.indexOf(minHeight);
+						// console.log(minHeight, minHeightIndex);
+						item.style.position = 'absolute';
+						item.style.top = minHeight + 'px';
+
+						if (minHeightIndex !== 0) {
+							item.style.left = '49%';
+						}
+
+						columnHeightArr[minHeightIndex] += item.offsetHeight + marginVal;
+					}
+				});
+
+				document.getElementById('wf-container').style.height = Math.max.apply(null, columnHeightArr) + 'px';
+		},
+
+		createThird: function(dataArr) {
+			// console.log(dataArr);
+			return '<h1>3</h1>';
+		},
+
+		_extend: function() {
 			var args = Array.prototype.slice.call(arguments),
 				len = args.length,
 				obj = null, i;
@@ -35,6 +105,13 @@
 			}
 
 			return obj;
+		},
+
+		_selector: function(ele) {
+			if (!ele) {
+				return;
+			}
+			return document.querySelector(ele);
 		}
 	}
 
@@ -44,7 +121,7 @@
 
 //waterfull AMD Export
 
-if (typeof(module) !== 'undefined') {
+if (typeof module !== 'undefined') {
 	module.exports = window.WaterFull;
 } else if (typeof define === 'function' && define.amd) {
     define([], function () {

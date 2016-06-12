@@ -3,11 +3,14 @@ html, body, div, h1, h2, h3, h4, h5, h6, p, span {
 	padding: 0;
 }
 
+html, body {
+	background-color: #f7f7f7;
+}
+
 .container {
 	width: 100%;
 	max-width: 500px;
 	margin: 0 auto;
-	background-color: #f7f7f7;
 	position: relative;
 	overflow: hidden;
 }
@@ -15,10 +18,9 @@ html, body, div, h1, h2, h3, h4, h5, h6, p, span {
 .banner {
 	width: 100%;
 	margin-bottom: 5px;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.5);
 }
 
-.cotent {
+.content {
 	width: 100%;
-	overflow: hidden;
-	position: relative;
 }
