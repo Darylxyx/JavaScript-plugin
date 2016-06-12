@@ -13,23 +13,31 @@
 		
 		create: function(dataArr) {
 			var type = this.opts.type,
-				funcList = [this.createFirst, this.createSecond, this.createThird];
-
+				func;
 			if (!type || !dataArr.length) {
 				return;
 			}
-
-			if (funcList[type - 1]) {
-				var str = funcList[type - 1](dataArr),
-					listNode = document.createElement('div');
-				listNode.id = 'wf-container';
-				listNode.style.width = '100%';
-				listNode.style.position = 'relative';
-				listNode.style.overflow = 'hidden';
-				listNode.innerHTML = str;
-				this.ele.appendChild(listNode);
+			switch (type) {
+				case 1:
+					func = this.createFirst;
+					break;
+				case 2:
+					func = this.createSecond;
+					break;
+				case 3:
+					func = this.createThird;
+					break;
+				default:
+					return;
 			}
-
+			var str = func(dataArr),
+				listNode = document.createElement('div');
+			listNode.id = 'wf-container';
+			listNode.style.width = '100%';
+			listNode.style.position = 'relative';
+			listNode.style.overflow = 'hidden';
+			listNode.innerHTML = str;
+			this.ele.appendChild(listNode);
 			if (type === 2) {
 				this.secondeReflows();
 			}
