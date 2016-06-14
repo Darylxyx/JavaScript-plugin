@@ -55,10 +55,6 @@
 		},
 
 		createSecond: function(dataArr) {
-			function countRate(width, height) {
-				return height / width;
-			}
-
 			var _this = this,
 				result = dataArr.map(function(item, index) {
 					var height = _this._countRate(item.width, item.height) * 47 + '%';
