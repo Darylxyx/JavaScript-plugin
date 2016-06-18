@@ -1,4 +1,5 @@
 .wf-item {
+	height: 0;
 	margin-bottom: 2%;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -9,14 +10,12 @@
 
 .wf-item-1 {
 	width: 47%;
-	height: 0;
 	padding-bottom: 47%;
 	margin-left: 2%;
 }
 
 .wf-item-2 {
 	width: 47%;
-	height: 0;
 	margin-left: 2%;
 }
 
