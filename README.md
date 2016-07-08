@@ -1,4 +1,4 @@
 # JavaScript-plugin
 
 ### WaterFall
-[Demo](https://darylxyx.github.io/Demo/waterFall/index.html)
+[DEMO](https://darylxyx.github.io/Demo/waterFall/index.html)
