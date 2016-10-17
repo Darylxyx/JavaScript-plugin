@@ -19,7 +19,7 @@ p {
 
 .container {
 	width: 100%;
-	max-width: 600px;
+	max-width: 500px;
 	height: 100%;
 	margin: 0 auto;
 	position: relative;
@@ -75,6 +75,6 @@ p {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	border-radius: 10px;
+	border-radius: 6  px;
 	box-shadow: 0 0 10px 2px rgba(255,255,255,0.6);
 }
