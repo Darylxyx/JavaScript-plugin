@@ -2,6 +2,7 @@ function ajax(opts) {
 
 	opts.type = opts.type || 'get';
 	opts.type = opts.type.toLowerCase();
+	opts.dataType = opts.dataType || 'json';
 	opts.dataType = opts.dataType.toLowerCase();
 	
 	if (opts.dataType == 'jsonp') {
@@ -10,7 +11,7 @@ function ajax(opts) {
 	}
 
 	var xhr = new XMLHttpRequest(),
-		params = formatParams(opts.data);
+		params = null;
 
 	xhr.onreadystatechange = function() {
 		if (xhr.readystate == 4) {
@@ -24,9 +25,11 @@ function ajax(opts) {
 	}
 
 	if (opts.type == 'get') {
+		params = formatParams(opts.data);
 		xhr.open('get', opts.url + '?' + params, true);
 		xhr.send(null);
 	} else if (opts.type == 'post') {
+		params = formDataParams(opts.data);
 		xhr.open('post', opts.url, true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoed');
 		xhr.send(params);
@@ -38,6 +41,14 @@ function ajax(opts) {
 			arr.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
 		}
 		return arr.join('&');
+	}
+
+	function formDataParams(data) {
+		var fd = new FormData();
+		for (var key in data) {
+			fd.append(key, encodeURIComponent(data[key]));
+		}
+		return fd;
 	}
 
 	function jsonpRequest(opts) {
