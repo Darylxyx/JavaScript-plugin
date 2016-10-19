@@ -74,11 +74,21 @@ function ajax(opts) {
 		window[callbackName] = function(json) {
 			oHead.removeChild(oScript);
 			window[callbackName] = null;
+			window.clearTimeout(oScript.timer);
 			opts.success && opts.success(json);
 			opts.done && opts.done(json);
 		};
 
 		//发起请求
 		oScript.src = opts.url + '?' + params;
+
+		if (opts.time) {
+			oScript.timer = window.setTimeout(function() {
+				oHead.removeChild(oScript);
+				window[callbackName] = null;
+				opts.fail && opts.fail({message: 'timeout'});
+				opts.done && opts.fail({message: 'timeout'});
+			}, opts.time);
+		}
 	}
 }
