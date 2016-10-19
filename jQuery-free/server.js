@@ -71,17 +71,3 @@ function ajax(opts) {
 		oScript.src = opts.url + '?' + params;
 	}
 }
-
-var data = {
-	url: encodeURIComponent(window.location.href)
-};
-
-ajax({
-	data: data,
-	url: 'https://h5.kankanapp.com.cn/wechatapi/',
-	type: 'get',
-	dataType: 'jsonp',
-	done: function(json, message) {
-		console.log(JSON.stringify(json));
-	}
-});
