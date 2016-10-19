@@ -3,8 +3,8 @@
 ```
 //init
 var wtf = new WaterFull(container, {
-	type: listType, //listType: 1 -> 等高等宽 2 -> 等宽 3 -> 等高
-	urlField: 'picUrl' //urlField: 数据中图片url对应字段
+	type: listType, //1 -> 等高等宽 2 -> 等宽 3 -> 等高
+	urlField: 'picUrl' //数据中图片url对应字段
 });
 
 //create
