@@ -11,5 +11,19 @@
 	<div class="container">
 	</div>
 <script src="./server.js"></script>
+<script>
+	var data = {
+		url: encodeURIComponent
+	};
+	ajax({
+		data: data,
+		url: 'https://h5.kankanapp.com.cn/wechatapi/',
+		dataType: 'jsonp',
+		type: 'get',
+		done: function(json) {
+			console.log(JSON.stringify(json));
+		}
+	});
+</script>
 </body>
 </html>
