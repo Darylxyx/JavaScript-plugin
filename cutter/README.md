@@ -1,0 +1,16 @@
+### Usage
+```
+//init
+var cutter = new Cutter(container, {
+  imgUrl: url,
+  conWidth: document.body.clientWidth, //裁剪区域宽度
+  conHeight: document.body.clientWidth * 1.2, //裁剪区域高度
+  speed: 2, //滑动速度
+  callback: function() {
+    //doSomething... 创建成功回调
+  }
+});
+
+//cut
+var result = cutter.cut(); //返回裁剪后图片的base64码
+```
