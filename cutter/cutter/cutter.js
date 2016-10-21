@@ -21,6 +21,7 @@
 				_this = this;
 
 			img.src = this.opts.imgUrl;
+			img.style.webkitUserSelect = 'none';
 			img.id = 'cutImgObj';
 
 			img.onload = function() {
@@ -78,7 +79,7 @@
 						_this.cutData.moveY = Math.abs(move);
 					});
 				}
-
+				
 				_this.cutData.scaleRate = imgCurrentWidth / imgWidth;
 
 				_this.ele.appendChild(img);
@@ -97,8 +98,8 @@
 
 			canvas.width = cutWidth;
 			canvas.height = cutHeight;
-			canvas.getContext('2d').drawImage(img, data.moveX/data.scaleRate, data.moveY/data.scaleRate, cutWidth, cutHeight, 0, 0, cutWidth, cutHeight);
 
+			canvas.getContext('2d').drawImage(img, data.moveX/data.scaleRate, data.moveY/data.scaleRate, cutWidth, cutHeight, 0, 0, cutWidth, cutHeight);
 			return canvas.toDataURL('image/png');
 		},
 

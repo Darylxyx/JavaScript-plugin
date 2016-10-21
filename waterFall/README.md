@@ -3,9 +3,9 @@
 ```
 init:
 var wtf = new WaterFull('.content', {
-			type: listType,
-			urlField: 'picUrl'
-		});
+	type: listType,
+	urlField: 'picUrl'
+});
 
 create:
 wtf.create(dataArr);
