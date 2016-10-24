@@ -16,7 +16,7 @@ function ajax(opts) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readystate == 4) {
 			opts.done && opts.done(xhr.responseText, xhr.responseXML);
-			if ((xhr.status > 200 && xhr.status <= 300) || xhr.status == 304) {
+			if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
 				opts.success && opts.success(xhr.responseText, xhr.responseXML);
 			} else {
 				opts.fail && opts.fail(xhr.responseText, xhr.responseXML);
