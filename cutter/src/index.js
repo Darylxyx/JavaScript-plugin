@@ -2,6 +2,7 @@ window.onload = function() {
 
 	function SubType() {
 		var doc = document;
+		this.containerDom = doc.querySelector('.container');
 		this.pageListDom = Array.prototype.slice.apply(doc.querySelectorAll('.page'));
 		this.fileDom = doc.querySelector('#files');
 		this.picAreaDom = doc.querySelector('.pic-area');
@@ -28,8 +29,8 @@ window.onload = function() {
 			var _this = this;
 			this.cutter = new Cutter(this.picAreaDom, {
 				imgUrl: url,
-				conWidth: document.body.clientWidth,
-				conHeight: document.body.clientWidth * 1.2,
+				conWidth: this.containerDom.offsetWidth,
+				conHeight: this.containerDom.offsetWidth * 1.2,
 				speed: 2,
 				callback: function() {
 					_this.turnPage(1);
