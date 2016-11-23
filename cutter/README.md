@@ -3,8 +3,8 @@
 //init
 var cutter = new Cutter(container, {
   imgUrl: url,
-  conWidth: document.body.clientWidth, //裁剪区域宽度
-  conHeight: document.body.clientWidth * 1.2, //裁剪区域高度
+  conWidth: container_width, //裁剪区域宽度
+  conHeight: container_height, //裁剪区域高度
   speed: 2, //滑动速度
   callback: function() {
     //doSomething... 创建成功回调
