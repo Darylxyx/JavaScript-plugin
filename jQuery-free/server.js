@@ -28,13 +28,13 @@
 		if (opts.type == 'get') {
 			params = formatParams(opts.data);
 			xhr.open('get', opts.url + '?' + params, true);
-			// opts.headers && setHeaders();
+			opts.headers && setHeaders();
 			xhr.send(null);
 		} else if (opts.type == 'post') {
 			params = formatParams(opts.data);
 			xhr.open('post', opts.url, true);
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			// opts.headers && setHeaders();
+			opts.headers && setHeaders();
 			xhr.send(params);
 		}
 
@@ -89,7 +89,7 @@
 
 		function setHeaders() {
 			for (var o in opts.headers) {
-				console.log(o, opts.headers[o]);
+				// console.log(o, opts.headers[o]);
 				xhr.setRequestHeader(o, opts.headers[o]);
 			}
 		}
