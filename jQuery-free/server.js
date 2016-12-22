@@ -55,7 +55,7 @@
 
 			opts.jsonpCallback = opts.jsonpCallback || 'callback';
 
-			var callbackName = 'jsonp_' + (new Date()).getTime();
+			var callbackName = 'jsonp_' + Math.random().toString().split('.')[1];
 
 			opts.data[opts.jsonpCallback] = callbackName;
 
