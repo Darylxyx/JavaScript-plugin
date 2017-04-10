@@ -27,7 +27,8 @@
 
 		if (opts.type == 'get') {
 			params = formatParams(opts.data);
-			xhr.open('get', opts.url + '?' + params, true);
+			var url = opts.url.indexOf('?') > -1 ? (opts.url + '&' + params) : (opts.url + '?' + params);
+			xhr.open('get', url, true);
 			opts.headers && setHeaders();
 			xhr.send(null);
 		} else if (opts.type == 'post') {

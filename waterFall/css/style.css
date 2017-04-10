@@ -33,6 +33,11 @@ html, body {
 	background-image: url(../resource/images/banner.jpg);
 }
 
+.load-more {
+	text-align: center;
+	padding: 10px 0 15px 0;
+}
+
 .guide {
 	width: 100%;
 	position: absolute;

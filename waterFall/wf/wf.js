@@ -11,9 +11,20 @@
 			heightField: 'height'
 		};
 		this.opts = this._extend({}, this.defaults, opts);
+		this._init();
 	}
 
 	WaterFull.prototype = {
+
+		_init: function() {
+			var listNode = document.createElement('div');
+			listNode.id = 'wf-container';
+			listNode.style.width = '100%';
+			listNode.style.position = 'relative';
+			listNode.style.overflow = 'hidden';
+			this.$listNode = listNode;
+			this.ele.appendChild(listNode);
+		},
 		
 		create: function(dataArr) {
 			var type = this.opts.type,
@@ -35,14 +46,8 @@
 					return;
 			}
 
-			var listNode = document.createElement('div');
-			listNode.id = 'wf-container';
-			listNode.style.width = '100%';
-			listNode.style.position = 'relative';
-			listNode.style.overflow = 'hidden';
-			listNode.innerHTML = str;
-			this.ele.appendChild(listNode);
-
+			this.$listNode.innerHTML += str;
+			
 			if (type === 2) {
 				this.secondeReflows();
 			}
@@ -71,27 +76,27 @@
 			var container = document.getElementById('wf-container'),
 				itemList = Array.prototype.slice.call(document.getElementsByClassName('wf-item-2')),
 				marginVal = this.conWidth * 0.02,
-				columnHeightArr = new Array(2);
+				columnHeightArr = [];
 
-				itemList.forEach(function(item, index) {
-					if (index < 2) {
-						columnHeightArr[index] = item.offsetHeight + marginVal;
-					} else {
-						var minHeight = Math.min.apply(null, columnHeightArr),
-							minHeightIndex = columnHeightArr.indexOf(minHeight);
+			itemList.forEach(function(item, index) {
+				if (index < 2) {
+					columnHeightArr[index] = item.offsetHeight + marginVal;
+				} else {
+					var minHeight = Math.min.apply(null, columnHeightArr),
+						minHeightIndex = columnHeightArr.indexOf(minHeight);
 
-						item.style.position = 'absolute';
-						item.style.top = minHeight + 'px';
+					item.style.position = 'absolute';
+					item.style.top = minHeight + 'px';
 
-						if (minHeightIndex !== 0) {
-							item.style.left = '49%';
-						}
-
-						columnHeightArr[minHeightIndex] += item.offsetHeight + marginVal;
+					if (minHeightIndex !== 0) {
+						item.style.left = '49%';
 					}
-				});
 
-				container.style.minHeight = Math.max.apply(null, columnHeightArr) + 'px';
+					columnHeightArr[minHeightIndex] += item.offsetHeight + marginVal;
+				}
+			});
+
+			container.style.minHeight = Math.max.apply(null, columnHeightArr) + 'px';
 		},
 
 		createThird: function(dataArr) {
