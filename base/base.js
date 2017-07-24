@@ -52,6 +52,31 @@
         };
 	};
 
+	Base.prototype.setCookie = function(name, value, days) {
+		let Days = days || 1,
+			exp = new Date();
+		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+		document.cookie = name + "=" + escape (value) + ";expires=" + exp.toGMTString();
+	};
+
+	Base.prototype.getCookie = function(name) {
+		var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)"); //正则匹配
+		if (arr = document.cookie.match(reg)) {
+			return unescape(arr[2]);
+		} else {
+			return null;
+		}
+	};
+
+	Base.prototype.delCookie = function(name) {
+		var exp = new Date();
+		exp.setTime(exp.getTime() - 1);
+		var cval = this.getCookie(name);
+		if (cval != null) {
+			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+		}
+	};
+
 	var basefn = new Base();
 
 	window.basefn = basefn;
