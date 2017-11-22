@@ -154,7 +154,27 @@
 //在没有必要兴师动众地创建构造函数，而只想让一个对象与另一个对象保持类似的情况下，原型式继承是完全可以胜任的。
 //【原型式继承】
 
-//寄生式继承
+//【寄生式继承】
+function createAnother(original) {
+	var clone = Object.create(original);
+	clone.sayHi = function() {
+		console.log('hi');
+	};
+	return clone;
+}
+
+var person = {
+	name: 'abc',
+	firends: ['Shelby', 'Court', 'Van']
+};
+
+var anotherPerson = createAnother(person);
+anotherPerson.sayHi();
+
+//寄生式继承问题
+//在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。
+
+//【寄生式继承】
 
 //寄生组合式继承
 
