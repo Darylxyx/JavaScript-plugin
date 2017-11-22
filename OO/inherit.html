@@ -113,11 +113,45 @@
 
 
 //【原型式继承】
-function object(o) {
-	function F() {}
-	F.prototype = o;
-	return new F();
-}
+// function object(o) {
+// 	function F() {}
+// 	F.prototype = o;
+// 	return new F();
+// }
+
+// var person = {
+// 	name: 'ABC',
+// 	firends: ['Shelby', 'Court', 'Van']
+// };
+
+// var personA = object(person);
+// personA.name = 'AAA';
+// personA.firends.push('Rob');
+
+// var personB = object(person);
+// personB.name = 'BBB';
+// personB.firends.push('Barbie');
+
+// console.log(person.firends);
+
+//ES5实现原型式继承
+// var person = {
+// 	name: 'ABC',
+// 	firends: ['Shelby', 'Court', 'Van']
+// };
+
+// var personA = Object.create(person);
+// personA.name = 'AAA';
+// personA.firends.push('Rob');
+
+// var personB = Object.create(person);
+// personB.name = 'BBB';
+// personB.firends.push('Barbie');
+
+// console.log(person.firends);
+
+//原型式继承问题
+//在没有必要兴师动众地创建构造函数，而只想让一个对象与另一个对象保持类似的情况下，原型式继承是完全可以胜任的。
 //【原型式继承】
 
 //寄生式继承
