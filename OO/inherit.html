@@ -7,29 +7,47 @@
 <script>
 //继承
 
-//原型链
+//[原型链]
+// function SuperType() {
+// 	this.property = true;
+// }
+
+// SuperType.prototype.getSuperValue = function() {
+// 	return this.property;
+// };
+
+// function SubType() {
+// 	this.subproperty = false;
+// }
+
+// SubType.prototype = new SuperType();
+
+// SubType.prototype.getSubValue = function() {
+// 	return this.subproperty;
+// };
+
+// var instance = new SubType();
+// console.log(instance.getSuperValue());
+
+//原型链缺陷
 function SuperType() {
-	this.property = true;
+	this.colors = ['red', 'blue', 'green'];
 }
 
-SuperType.prototype.getSuperValue = function() {
-	return this.property;
-};
-
-function SubType() {
-	this.subproperty = false;
-}
+function SubType() {}
 
 SubType.prototype = new SuperType();
 
-SubType.prototype.getSubValue = function() {
-	return this.subproperty;
-};
+var instanceA = new SubType();
+instanceA.colors.push('black');
+console.log(instanceA.colors);
 
-var instance = new SubType();
-console.log(instance.getSuperValue());
+var instanceB = new SubType();
+console.log(instanceB.colors);
 
-//借用构造函数
+//[原型链]
+
+//[借用构造函数]
 
 //组合继承
 
