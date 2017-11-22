@@ -7,7 +7,8 @@
 <script>
 //继承
 
-//[原型链]
+
+//【原型链】
 // function SuperType() {
 // 	this.property = true;
 // }
@@ -25,33 +26,95 @@
 // SubType.prototype.getSubValue = function() {
 // 	return this.subproperty;
 // };
-
 // var instance = new SubType();
 // console.log(instance.getSuperValue());
 
 //原型链缺陷
-function SuperType() {
-	this.colors = ['red', 'blue', 'green'];
-}
+// function SuperType() {
+// 	this.colors = ['red', 'blue', 'green'];
+// }
 
-function SubType() {}
+// function SubType() {}
 
-SubType.prototype = new SuperType();
+// SubType.prototype = new SuperType();
 
-var instanceA = new SubType();
-instanceA.colors.push('black');
-console.log(instanceA.colors);
+// var instanceA = new SubType();
+// instanceA.colors.push('black');
+// console.log(instanceA.colors);
 
-var instanceB = new SubType();
-console.log(instanceB.colors);
+// var instanceB = new SubType();
+// console.log(instanceB.colors);
+//【原型链】
 
-//[原型链]
 
-//[借用构造函数]
 
-//组合继承
+//【借用构造函数（经典继承）】
+// function SuperType(name) {
+// 	this.name = name;
+// 	this.colors = ['red', 'blue', 'green'];
+// }
 
-//原型式继承
+// function SubType() {
+// 	SuperType.call(this, 'Daryl');
+// }
+
+// var instanceA = new SubType();
+// instanceA.colors.push('black');
+// console.log(instanceA.colors);
+
+// var instanceB = new SubType();
+// console.log(instanceB.colors);
+
+//借用构造函数问题
+//方法都是在子类中创建的，函数无法复用
+
+//【借用构造函数】
+
+
+
+//【组合继承（伪经典继承）】
+// function SuperType(name) {
+// 	this.name = name;
+// 	this.colors = ['red', 'blue', 'green'];
+// }
+
+// SuperType.prototype.sayName = function() {
+// 	console.log(this.name);
+// };
+
+// function SubType(name, age) {
+// 	SuperType.call(this, name);
+// 	this.age = age;
+// }
+
+// SubType.prototype = new SuperType();
+// console.log(SubType.prototype.constructor); //SuperType
+// SubType.prototype.constructor = SubType;
+// SubType.prototype.sayAge = function() {
+// 	console.log(this.age);
+// };
+
+// var instanceA = new SubType('AAA', 29);
+// instanceA.colors.push('black');
+// console.log(instanceA.colors);
+// instanceA.sayName();
+// instanceA.sayAge();
+
+// var instanceB = new SubType('BBB', 27);
+// console.log(instanceB.colors);
+// instanceB.sayName();
+// instanceB.sayAge();
+
+//组合继承问题
+//组合继承融合了原型链与借用构造函数的优点，避免了二者的缺陷，是最常用的继承模式。
+
+//【组合继承】
+
+
+
+
+//【原型式继承】
+//【原型式继承】
 
 //寄生式继承
 
