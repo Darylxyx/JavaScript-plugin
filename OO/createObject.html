@@ -9,18 +9,21 @@
 
 
 //【工厂模式】
-function Person(name, age) {
-	var o = new Object();
-	o.name = name;
-	o.age = age;
-	o.sayName = function() {
-		console.log(this.name);
-	};
-	return o;
-}
+// function Person(name, age) {
+// 	var o = new Object();
+// 	o.name = name;
+// 	o.age = age;
+// 	o.sayName = function() {
+// 		console.log(this.name);
+// 	};
+// 	return o;
+// }
 
-var person1 = Person('Nicholas', 29),
-	person2 = Person('Greg', 27);
+// var person1 = Person('Nicholas', 29),
+// 	person2 = Person('Greg', 27);
+
+//工厂模式问题
+//工厂模式虽然解决了创建多个相似对象的问题，但却没解决对象识别的问题
 
 //【工厂模式】
 
@@ -38,20 +41,36 @@ var person1 = Person('Nicholas', 29),
 // var person1 = new Person('Nicholas', 29),
 // 	person2 = new Person('Greg', 27);
 
+// console.log(person1.constructor === Person); //true
+// console.log(person1 instanceof Object); //true
+// console.log(person1 instanceof Person); //true
+
+//构造函数模式问题
+//对象的 constructor 属性最初是用来标识对象类型的。检测对象类型，还是 instanceof 更可靠。
+//创建的对象既是 Object 的实例，也是 Person 的实例。
+//创建自定义的构造函数意味着将来可以将它的实例标识为一种特定的类型；而这正是构造函数模式胜过工厂模式的地方。
+
+//最大问题在于每个方法都会在实例上重新创建一遍
+
 //【构造函数模式】
 
 
 
 //【原型模式】
-// function Person() {}
-// Person.prototype.name = 'Nicholas';
-// Person.prototype.age = 29;
-// Person.prototype.sayName = function() {
-// 	console.log(this.name);
-// };
+function Person() {}
+Person.prototype.name = 'Nicholas';
+Person.prototype.age = 29;
+Person.prototype.sayName = function() {
+	console.log(this.name);
+};
 
-// var person1 = new Person();
-// person1.sayName();
+var person1 = new Person();
+person1.sayName();
+
+console.log(Person.prototype == person1.__proto__); //true
+
+//原型模式问题
+//每个实例共享属性和方法，若一个实例更改引用类型属性，所有实例该属性均会被改变。
 
 //【原型模式】
 
