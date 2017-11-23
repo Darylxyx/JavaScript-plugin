@@ -9,50 +9,76 @@
 
 
 //【工厂模式】
-function Person(name, age) {
-	var o = new Object();
-	o.name = name;
-	o.age = age;
-	o.sayName = function() {
-		console.log(this.name);
-	};
-	return o;
-}
+// function Person(name, age) {
+// 	var o = new Object();
+// 	o.name = name;
+// 	o.age = age;
+// 	o.sayName = function() {
+// 		console.log(this.name);
+// 	};
+// 	return o;
+// }
 
-var person1 = Person('Nicholas', 29),
-	person2 = Person('Greg', 27);
+// var person1 = Person('Nicholas', 29),
+// 	person2 = Person('Greg', 27);
+
 //【工厂模式】
 
-//【构造函数模式】
-function Person(name, age) {
-	this.name = name;
-	this.age = age;
-	this.sayName = function() {
-		console.log(this.name);
-	};
-}
 
-var person1 = new Person('Nicholas', 29),
-	person2 = new Person('Greg', 27);
+
 //【构造函数模式】
+// function Person(name, age) {
+// 	this.name = name;
+// 	this.age = age;
+// 	this.sayName = function() {
+// 		console.log(this.name);
+// 	};
+// }
+
+// var person1 = new Person('Nicholas', 29),
+// 	person2 = new Person('Greg', 27);
+
+//【构造函数模式】
+
 
 
 //【原型模式】
-function Person() {}
-Person.prototype.name = 'Nicholas';
-Person.prototype.age = 29;
-Person.prototype.sayName = function() {
-	console.log(this.name);
-};
+// function Person() {}
+// Person.prototype.name = 'Nicholas';
+// Person.prototype.age = 29;
+// Person.prototype.sayName = function() {
+// 	console.log(this.name);
+// };
 
-var person1 = new Person();
-person1.sayName();
+// var person1 = new Person();
+// person1.sayName();
 
 //【原型模式】
 
 
 
 //【组合模式】
+function Person(name, age) {
+	this.name = name;
+	this.age = age;
+	this.friends = ['Shelby', 'Court'];
+}
+
+Person.prototype = {
+	constructor: Person,
+	sayName: function() {
+		console.log(this.name);
+	}
+};
+
+var person1 = new Person('Nicholas', 29),
+	person2 = new Person('Greg', 27);
+
+person1.friends.push('Van');
+console.log(person1.friends);
+console.log(person2.friends);
+console.log(person1.friends === person2.friends); //false
+console.log(person1.sayName === person1.sayName); //true
 //【组合模式】
 
 
