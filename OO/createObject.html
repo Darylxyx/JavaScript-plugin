@@ -57,23 +57,51 @@
 
 
 //【原型模式】
-function Person() {}
-Person.prototype.name = 'Nicholas';
-Person.prototype.age = 29;
-Person.prototype.sayName = function() {
-	console.log(this.name);
-};
+// function Person() {}
+// Person.prototype.name = 'Nicholas';
+// Person.prototype.age = 29;
+// Person.prototype.sayName = function() {
+// 	console.log(this.name);
+// };
 
-var person1 = new Person();
-person1.sayName();
+// var person1 = new Person();
+// person1.sayName();
 
-console.log(person1.__proto__ == Person.prototype); //true
-console.log(Person.prototype.isPrototypeOf(person1)); //true
-console.log(Object.getPrototypeOf(person1) == Person.prototype); //ES5方法 true
+// console.log(person1.__proto__ == Person.prototype); //true
+// console.log(Person.prototype.isPrototypeOf(person1)); //true
+// console.log(Object.getPrototypeOf(person1) == Person.prototype); //ES5方法 true
 
 //原型模式问题
 //每个实例共享属性和方法，若一个实例更改引用类型属性，所有实例该属性均会被改变。
 //指针[[Prototype]]存在于实例与构造函数的原型对象之间，在 Firefox、Safari 和 Chrome 在可以通过 __proto__ 访问。
+
+// console.log(person1.hasOwnProperty('name'));
+
+//hasOwnProperty 可以检测属性是存在于实例上还是从原型继承来的
+
+// console.log(Object.keys(Person.prototype));
+// person1.name = 'Greg';
+// console.log(Object.keys(person1));
+
+//使用ES5的 Object.keys 方法也可以返回所有可枚举的属性。
+
+// console.log(Object.getOwnPropertyNames(Person.prototype));
+
+// getOwnPropertyNames 方法会返回所以属性，包括不可枚举的。上面两个方法都可以用来替代 for in循环。
+
+function Person() {}
+
+Person.prototype = {
+	constructor: Person,
+	name: 'Nicholas',
+	age: 29,
+	sayName: function() {
+		console.log(this.name);
+	}
+};
+
+//可以通过对象字面量的方式书写原型对象，不过由于对原型的重写会丢掉 constructor 属性，可以手动指定。
+//不过这样会导致 constructor 属性的 [[Enumerable]] 为true
 
 //【原型模式】
 
