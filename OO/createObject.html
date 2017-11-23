@@ -9,19 +9,19 @@
 
 
 //【工厂模式】
-// function Person(name, age) {
-// 	var o = new Object();
-// 	o.name = name;
-// 	o.age = age;
-// 	o.sayName = function() {
-// 		console.log(this.name);
-// 	};
-// 	return o;
-// }
+function Person(name, age) {
+	var o = new Object();
+	o.name = name;
+	o.age = age;
+	o.sayName = function() {
+		console.log(this.name);
+	};
+	return o;
+}
 
-// var person1 = Person('Nicholas', 29),
-// 	person2 = Person('Greg', 27);
-
+var person1 = Person('Nicholas', 29),
+	person2 = Person('Greg', 27);
+	
 //【工厂模式】
 
 
