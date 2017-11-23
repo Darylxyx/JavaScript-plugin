@@ -58,37 +58,61 @@
 
 
 //【组合模式】
-function Person(name, age) {
-	this.name = name;
-	this.age = age;
-	this.friends = ['Shelby', 'Court'];
-}
+// function Person(name, age) {
+// 	this.name = name;
+// 	this.age = age;
+// 	this.friends = ['Shelby', 'Court'];
+// }
 
-Person.prototype = {
-	constructor: Person,
-	sayName: function() {
-		console.log(this.name);
-	}
-};
+// Person.prototype = {
+// 	constructor: Person,
+// 	sayName: function() {
+// 		console.log(this.name);
+// 	}
+// };
 
-var person1 = new Person('Nicholas', 29),
-	person2 = new Person('Greg', 27);
+// var person1 = new Person('Nicholas', 29),
+// 	person2 = new Person('Greg', 27);
 
-person1.friends.push('Van');
-console.log(person1.friends);
-console.log(person2.friends);
-console.log(person1.friends === person2.friends); //false
-console.log(person1.sayName === person2.sayName); //true
+// person1.friends.push('Van');
+// console.log(person1.friends);
+// console.log(person2.friends);
+// console.log(person1.friends === person2.friends); //false
+// console.log(person1.sayName === person2.sayName); //true
 //【组合模式】
 
 
 
 //【动态原型模式】
+// function Person(name, age) {
+// 	this.name = name;
+// 	this.age = age;
+
+// 	if (typeof this.sayName != 'function') {
+// 		Person.prototype.sayName = function() {
+// 			console.log(this.name);
+// 		}
+// 	}
+// }
 //【动态原型模式】
 
 
 
 //【寄生构造函数模式】
+// function SpecialArray() {
+// 	var values = new Array();
+
+// 	values.push.apply(values, arguments);
+
+// 	values.toPipedString = function() {
+// 		return this.join('|');
+// 	};
+
+// 	return values;
+// }
+
+// var colors = new SpecialArray('red', 'blue', 'green');
+// console.log(colors.toPipedString());
 //【寄生构造函数模式】
 
 
