@@ -89,19 +89,37 @@
 
 // getOwnPropertyNames 方法会返回所以属性，包括不可枚举的。上面两个方法都可以用来替代 for in循环。
 
-function Person() {}
+// function Person() {}
 
-Person.prototype = {
-	constructor: Person,
-	name: 'Nicholas',
-	age: 29,
-	sayName: function() {
-		console.log(this.name);
-	}
-};
+// Person.prototype = {
+// 	constructor: Person,
+// 	name: 'Nicholas',
+// 	age: 29,
+// 	sayName: function() {
+// 		console.log(this.name);
+// 	}
+// };
 
 //可以通过对象字面量的方式书写原型对象，不过由于对原型的重写会丢掉 constructor 属性，可以手动指定。
-//不过这样会导致 constructor 属性的 [[Enumerable]] 为true
+//不过这样会导致 constructor 属性的 [[Enumerable]] 为true，可以通过ES5的 defineProperty 方法解决。
+
+// function Person() {}
+
+// Person.prototype = {
+// 	name: 'Nicholas',
+// 	age: 29,
+// 	sayName: function() {
+// 		console.log(this.name);
+// 	}
+// };
+
+// Object.defineProperty(Person.prototype, 'constructor', {
+// 	enumerable: false,
+// 	value: Person
+// });
+
+// console.log(Object.keys(Person.prototype));
+// console.log(Object.getOwnPropertyNames(Person.prototype));
 
 //【原型模式】
 
