@@ -72,7 +72,8 @@
 // console.log(Object.getPrototypeOf(person1) == Person.prototype); //ES5方法 true
 
 //原型模式问题
-//每个实例共享属性和方法，若一个实例更改引用类型属性，所有实例该属性均会被改变。
+//1. 每个实例共享属性和方法，若一个实例更改引用类型属性，所有实例该属性均会被改变。
+//2. 不能传参
 //指针[[Prototype]]存在于实例与构造函数的原型对象之间，在 Firefox、Safari 和 Chrome 在可以通过 __proto__ 访问。
 
 // console.log(person1.hasOwnProperty('name'));
