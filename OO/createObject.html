@@ -155,29 +155,29 @@
 
 
 //【动态原型模式】
-// function Person(name, age) {
-// 	this.name = name;
-// 	this.age = age;
+function Person(name, age) {
+	this.name = name;
+	this.age = age;
 
-// 	if (typeof this.sayName == 'function') return;
-// 		// console.log('create');
-// 	Person.prototype.sayName = function() {
-// 		console.log(this.name);
-// 	}
+	if (typeof this.sayName == 'function') return;
+		// console.log('create');
+	Person.prototype.sayName = function() {
+		console.log(this.name);
+	}
 
-// 	Person.prototype.sayAge = function() {
-// 		console.log(this.age);
-// 	}
-// }
+	Person.prototype.sayAge = function() {
+		console.log(this.age);
+	}
+}
 
-// var person1 = new Person('xyx', 123),
-// 	person2 = new Person('yyy', 456);
+var person1 = new Person('xyx', 123),
+	person2 = new Person('yyy', 456);
 
-// console.log(person1);
-// console.log(person2);
+console.log(person1);
+console.log(person2);
 
-// person1.sayName();
-// person2.sayAge();
+person1.sayName();
+person2.sayAge();
 
 //动态原型模式问题
 //动态原型模式实际是是对组合模式进行了一次包装，将对原型对象的初始化操作放入构造函数内部了。
@@ -228,20 +228,20 @@
 
 
 //【稳妥构造函数模式】
-function Person(name, age) {
-	var o = new Object();
+// function Person(name, age) {
+// 	var o = new Object();
 
-	//可以定义些私有变量
+// 	//可以定义些私有变量
 
-	o.sayName = function() {
-		console.log(name);
-	};
+// 	o.sayName = function() {
+// 		console.log(name);
+// 	};
 
-	return o;
-}
+// 	return o;
+// }
 
-var friend = Person('Nicholas', 29);
-friend.sayName();
+// var friend = Person('Nicholas', 29);
+// friend.sayName();
 
 //稳妥构造函数问题
 //稳妥对象是指没有公共属性，而且其方法也不引用 this 的对象。
