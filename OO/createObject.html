@@ -65,10 +65,14 @@ Person.prototype.name = 'Nicholas';
 // };
 
 var person1 = new Person();
-person1.name = 'Daryl';
-console.log(person1.name);
-delete person1.name;
-console.log(person1.name);
+person1.gender = 'male';
+person1.age = 29;
+console.log(Object.keys(person1));
+console.log(Object.getOwnPropertyNames(Person.prototype));
+for (var o in person1) {
+	console.log(o);
+}
+
 // person1.sayName();
 // console.log(Person.prototype.constructor === Person);
 // console.log(person1.__proto__ == Person.prototype); //true
