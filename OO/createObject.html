@@ -58,19 +58,23 @@
 
 //【原型模式】
 function Person() {}
-// Person.prototype.name = 'Nicholas';
+Person.prototype.name = 'Nicholas';
 // Person.prototype.age = 29;
 // Person.prototype.sayName = function() {
 // 	console.log(this.name);
 // };
 
 var person1 = new Person();
+person1.name = 'Daryl';
+console.log(person1.name);
+delete person1.name;
+console.log(person1.name);
 // person1.sayName();
 // console.log(Person.prototype.constructor === Person);
 // console.log(person1.__proto__ == Person.prototype); //true
 // console.log(Person.prototype.isPrototypeOf(person1)); //true
-console.log(Object.getPrototypeOf(person1) === Person.prototype); //ES5方法 true
-console.log(Object.getPrototypeOf(person1));
+// console.log(Object.getPrototypeOf(person1) === Person.prototype); //ES5方法 true
+// console.log(Object.getPrototypeOf(person1));
 
 //原型模式问题
 //1. 每个实例共享属性和方法，若一个实例更改引用类型属性，所有实例该属性均会被改变。
