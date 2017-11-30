@@ -57,21 +57,26 @@
 
 
 //【原型模式】
-function Person() {}
-Person.prototype.name = 'Nicholas';
-// Person.prototype.age = 29;
-// Person.prototype.sayName = function() {
-// 	console.log(this.name);
-// };
+// function Person() {}
+// Person.prototype.name = 'Nicholas';
+// // Person.prototype.age = 29;
+// // Person.prototype.sayName = function() {
+// // 	console.log(this.name);
+// // };
 
-var person1 = new Person();
-person1.gender = 'male';
-person1.age = 29;
-console.log(Object.keys(person1));
-console.log(Object.getOwnPropertyNames(Person.prototype));
-for (var o in person1) {
-	console.log(o);
-}
+// var person1 = new Person();
+// person1.gender = 'male';
+// person1.age = 29;
+// console.log(Object.keys(person1));
+// console.log(Object.getOwnPropertyNames(Person.prototype));
+// for (var o in person1) {
+// 	console.log(o);
+// }
+
+String.prototype.reverseString = function() {
+	return this.split('').reverse().join('');
+};
+console.log('Hello World!'.reverseString());
 
 // person1.sayName();
 // console.log(Person.prototype.constructor === Person);
