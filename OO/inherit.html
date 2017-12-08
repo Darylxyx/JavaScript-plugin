@@ -118,42 +118,43 @@
 
 
 //【原型式继承】
-// function object(o) {
-// 	function F() {}
-// 	F.prototype = o;
-// 	return new F();
-// }
+function object(o) {
+	function F() {}
+	F.prototype = o;
+	return new F();
+}
 
-// var person = {
-// 	name: 'ABC',
-// 	firends: ['Shelby', 'Court', 'Van']
-// };
+var person = {
+	name: 'ABC',
+	friends: ['Shelby', 'Court', 'Van']
+};
 
-// var personA = object(person);
-// personA.name = 'AAA';
-// personA.firends.push('Rob');
+var personA = object(person);
+personA.name = 'AAA';
+personA.friends.push('Rob');
 
-// var personB = object(person);
-// personB.name = 'BBB';
-// personB.firends.push('Barbie');
+var personB = object(person);
+personB.name = 'BBB';
+personB.friends.push('Barbie');
 
-// console.log(person.firends);
+console.log(person.friends);
+console.log(personA.friends);
 
 //ES5实现原型式继承
 // var person = {
 // 	name: 'ABC',
-// 	firends: ['Shelby', 'Court', 'Van']
+// 	friends: ['Shelby', 'Court', 'Van']
 // };
 
 // var personA = Object.create(person);
 // personA.name = 'AAA';
-// personA.firends.push('Rob');
+// personA.friends.push('Rob');
 
 // var personB = Object.create(person);
 // personB.name = 'BBB';
-// personB.firends.push('Barbie');
+// personB.friends.push('Barbie');
 
-// console.log(person.firends);
+// console.log(person.friends);
 
 //原型式继承问题
 //在没有必要兴师动众地创建构造函数，而只想让一个对象与另一个对象保持类似的情况下，原型式继承是完全可以胜任的。
@@ -172,7 +173,7 @@
 
 // var person = {
 // 	name: 'abc',
-// 	firends: ['Shelby', 'Court', 'Van']
+// 	friends: ['Shelby', 'Court', 'Van']
 // };
 
 // var anotherPerson = createAnother(person);
