@@ -35,7 +35,9 @@
 	};
 
 	Base.prototype.htmlEncode = function(str) { //html字符转义
-		
+		var temp = document.createElement('div');
+		div.appendChild(document.createTextNode(str));
+		return div.innerHTML;
 	};
 
 	Base.prototype.checkPlatforms = function() {
