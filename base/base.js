@@ -34,6 +34,10 @@
 		return theRequest;
 	};
 
+	Base.prototype.htmlEncode = function(str) { //html字符转义
+		
+	};
+
 	Base.prototype.checkPlatforms = function() {
 		var u = navigator.userAgent, app = navigator.appVersion;
         return {
