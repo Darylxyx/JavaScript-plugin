@@ -82,6 +82,15 @@
 			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 		}
 	};
+	
+	Base.prototype.dateFormat = function(date) {
+		function further(num) {
+			if (num < 10) num = `0${num}`;
+			return num;
+		}
+		const str = `${date.getFullYear()}-${further(date.getMonth() + 1)}-${further(date.getDate())} ${further(date.getHours())}:${further(date.getMinutes())}:${further(date.getSeconds())}`;
+		return str;
+	};
 
 	var basefn = new Base();
 
